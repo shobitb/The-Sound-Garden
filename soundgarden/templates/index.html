@@ -3,12 +3,17 @@
 {% block content %}
 <div class="row-fluid">
     <legend>
-        Most Populars
+        Top 50 Artists and Tracks
     </legend>
-    <marquee class="stock" id="top-artists" scrollamount="8">
-    </marquee>
-    <marquee class="" scrollamount="15" id="top-songs">
-    </marquee>
+    <div class="stock" id="top-artists">
+        <marquee id="tape" scrollamount="2">
+        </marquee>
+    </div>
+    <div class="stock2" id="top-songs">
+        <marquee id="tape2" scrollamount="1">
+            Hello
+        </marquee>
+    </div>
 </div>
 <div class="row-fluid">
 	<div class="span3">
@@ -80,9 +85,9 @@
             <div class="row-fluid" id="male-female">
             </div>
             <div class="row-fluid">
-                <div class="span5" id="male">
+                <div class="span6" id="male">
                 </div>
-                <div class="span5" id="female">
+                <div class="span6" id="female">
                 </div>
             </div>
         </div>
@@ -100,7 +105,13 @@ $(document).ready(function() {
         $.each(tops['top'], function(index, value) {
             str = str + "<b class='space'> " + parseInt(parseInt(index) + 1) + ". " +  value[0] + "<small class='small'> " + accounting.formatNumber(value[1]) + "</small> </b>"
         })
-        $("#top-artists").html(str);
+        $("#tape").html(str);
+        $("#tape").marquee();
+        $("#tape2").marquee();
+        $(window).resize(function() {
+            $("#top-artists").css('height', 20);
+        }).resize()
+        
     })
 })
 /** var map;

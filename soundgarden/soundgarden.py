@@ -54,7 +54,7 @@ def demographics():
 @app.route('/topartists', methods=['POST'])
 def topartists():
 	conn = sqlite3.connect('/home/shobit/development/big-data-project/subsets/mbox/top_artists.db')
-	c = conn.execute("SELECT artist_name, hits FROM charts ORDER BY CAST(hits as integer) DESC LIMIT 15");
+	c = conn.execute("SELECT artist_name, hits FROM charts ORDER BY CAST(hits as integer) DESC LIMIT 50");
 	tops = c.fetchall()
 	return jsonify(top = tops)
 
